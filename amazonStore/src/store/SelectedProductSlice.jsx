@@ -11,16 +11,18 @@ const productSlice=createSlice({
     reducers: {
         addSelectedProduct:(state,action)=>{
 
-            // console.log("in selectedproduct action");
+          
 
             state.selectedProducts.push(action.payload)
 
         },
 
 
-        // removeSelectedProduct(){
+        removeSelectedProduct:(state)=>{
 
-        // }
+            state.selectedProducts=[]
+
+        }
     }
 
 })
