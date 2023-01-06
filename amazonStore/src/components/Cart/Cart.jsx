@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
 import { cartActions } from '../../store/CartSlice';
 
+import cartImage from "../../images/cartimage.png"
+
 
 function Cart() {
 
@@ -22,70 +24,102 @@ function Cart() {
 
 
   return (
+
+    // <></>
+
+
+
+
+
+
+
+
+
+    <div className="cart">
+
  
+
+      <div className="cart-header">
+
+        {cartProducts.length === 0 ? null:   <h2>CartItems</h2>}
        
-
-   
-
-
-      <div className="cart">
-
-        {cartProducts.length === 0 ? <div className='cart-heading'>Cart is empty</div>:
-        
-        cartProducts.map((p) => {
-
-          return <Card key={p.id} sx={{ maxWidth: 300 }} className="cart-card">
-
-            <CardActionArea >
-              <CardMedia
+        <div>
+          {cartProducts.length === 0 ?
+            null :
+            <button className='cart-btn' onClick={() => dispatch(cartActions.removeAllItems())}>Clear Cart</button>}
 
 
-                component="img"
-                height="250"
-                image={p.image}
-
-                sx={{ maxWidth: 190 }}
-                alt="green iguana"
-              />
-              {/* <ProductImage img={p.image}/> */}
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {p.title.substring(0, 20)}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {p.category}
-
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-
-                  {p.price}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className='cart-productcomponent-button'>
-
-            </CardActions>
-
-          </Card>
-
-
-        })
-           }
-
-
-     
-        {cartProducts.length===0 ? 
-        null:
-        <button className='cart-btn' onClick={() => dispatch(cartActions.removeAllItems())}>Clear Cart</button> }
-   
-
-
-
+        </div>
 
       </div>
- 
 
- 
+
+      <div className="cart-items">
+
+        {cartProducts.length === 0 ? <img src={cartImage} /> :
+
+          cartProducts.map((p) => {
+
+            return <Card key={p.id} sx={{ maxWidth: 300 }} className="cart-card" >
+
+              <CardActionArea >
+                <CardMedia
+
+
+                  component="img"
+                  height="250"
+                  image={p.image}
+
+                  sx={{ maxWidth: 190 }}
+                  alt="green iguana"
+                />
+                {/* <ProductImage img={p.image}/> */}
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {p.title.substring(0, 20)}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {p.category}
+
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+
+                    {p.price}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions className='cart-productcomponent-button'>
+
+              </CardActions>
+
+            </Card>
+
+
+          })
+        }
+
+      </div>
+
+      {/* <div>
+        {cartProducts.length === 0 ?
+          null :
+          <button className='cart-btn' onClick={() => dispatch(cartActions.removeAllItems())}>Clear Cart</button>}
+
+
+      </div> */}
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
   )
 }
 

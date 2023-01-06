@@ -9,7 +9,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import './Home.css'
-
+  
 import { fetchProducts } from '../../store/HomeSlice';
 
 // import increaseAmount from '../../store/CartSlice'
@@ -22,13 +22,14 @@ import { productActions } from '../../store/SelectedProductSlice';
 
 
 import { Link } from "react-router-dom"
+import Product from '../Product/Product';
 // import ProductImage from './ProductImage';
 
 function Home() {
 
     const dispatch = useDispatch();
     const products = useSelector(state => state.home);
-
+ 
 
     useEffect(() => {
 
@@ -38,12 +39,7 @@ function Home() {
 
     }, [])
 
-    // const onClickHandler =(id) =>{
-
-    //     dispatch(productActions.addSelectedProduct(products.id));
-
-    // }
-
+ 
 
     return (
         <div className='home'>
@@ -101,10 +97,15 @@ function Home() {
                                 </Button> */}
 
                                 
-                                <button className='viewProductbtn' onClick={() => dispatch(productActions.addSelectedProduct(p))}>  ViewProduct </button>
+                                {/* <button className='viewProductbtn' onClick={() => dispatch(productActions.addSelectedProduct(p))}>  ViewProduct </button> */}
+
+                                {/* <Link className='viewProductbtn' onClick={() => dispatch(productActions.addSelectedProduct(p))} to={`/product/${p.id}`}>ViewProduct</Link> */}
+                                <Link className='viewProductbtn'   to={`/product/${p.id}`}>ViewProduct</Link>
 
                             </CardActions>
                             {/* <button className='button-btn' onClick={() => dispatch(cartActions.addToCart(p))}> ssss</button> */}
+
+        
                         </Card>
 
                     )

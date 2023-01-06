@@ -11,7 +11,7 @@ const productSlice=createSlice({
     reducers: {
         addSelectedProduct:(state,action)=>{
 
-            console.log("in selectedproduct action");
+            // console.log("in selectedproduct action");
 
             state.selectedProducts.push(action.payload)
 
