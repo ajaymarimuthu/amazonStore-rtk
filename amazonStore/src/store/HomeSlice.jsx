@@ -34,9 +34,9 @@ const homeSlice=createSlice({
             state.loading=true
         })
         builder.addCase(fetchProducts.fulfilled, (state, action) =>{
-            state.loading=true
+            // state.loading=true
             state.products=action.payload
-            state.error=''
+            // state.error=''
         })
         builder.addCase(fetchProducts.rejected, (state, action) =>{
             state.loading=false

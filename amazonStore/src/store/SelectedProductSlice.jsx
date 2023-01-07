@@ -21,7 +21,7 @@ const productSlice=createSlice({
         removeSelectedProduct:(state)=>{
 
             state.selectedProducts=[]
-
+            
         }
     }
 

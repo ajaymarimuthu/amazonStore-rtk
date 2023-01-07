@@ -89,14 +89,9 @@ function Product() {
             {p.price}
           </Typography> */}
                 </CardContent>
-
-
+ 
               </CardActionArea>
-              {/* <CardActions className='cart-productcomponent-button'>
-
-              </CardActions> */}
-              
-
+             
             </Card>
 
           })

@@ -17,7 +17,7 @@ function Cart() {
 
   const cartProducts = useSelector(state => state.cart.cartProducts);
   
-  const count = useSelector(state => state.cart.count);
+  const count = useSelector(state => state.cart.cartItemsCount);
 
   const dispatch = useDispatch();
 
@@ -28,14 +28,7 @@ function Cart() {
   return (
 
     // <></>
-
-
-
-
-
-
-
-
+ 
 
     <div className="cart">
 
@@ -43,7 +36,7 @@ function Cart() {
 
       <div className="cart-header">
 
-        {cartProducts.length === 0 ? null:   <h2>CartItems</h2>}
+        {cartProducts.length === 0 ? null:   <h2>CartItems : {count}</h2>}
        
         <div>
           {cartProducts.length === 0 ?
@@ -91,7 +84,7 @@ function Cart() {
 
                   <Typography variant="body2" color="text.secondary">
 
-                    <div>Count: {count}</div>
+                    {/* <div>Count: {count}</div> */}
                     </Typography>
                 </CardContent>
               </CardActionArea>

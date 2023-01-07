@@ -15,7 +15,7 @@ const initialCartState={
         //     }
         // }
     ],
-    count:0
+    cartItemsCount:0
  
 }
 
@@ -28,8 +28,31 @@ const cartSlice=createSlice({
     reducers: {
 
         addToCart:(state,action)=>{
+
+
+            // const value=state.cartProducts.filter((product)=>{
+
+            //     return product.id!== action.payload.id;
+
+            // })
+            // state.cartProducts.push(value);
+
+
+            const dup=state.cartProducts.find((product)=>product.id === action.payload.id);
+
+            
+
+           { dup?state.cartProducts: state.cartProducts.push(action.payload)}
+           state.cartItemsCount++;
+
+
+
+
+
+
          
-            state.cartProducts.push(action.payload);
+            // 
+
         }, 
 
         // increaseAmount:(state,action)=>{
@@ -40,7 +63,8 @@ const cartSlice=createSlice({
 
         removeAllItems: (state)=>{
  
-            state.cartProducts=[];
+            state.cartProducts=[],
+            state.cartItemsCount=0
  
         }
 
