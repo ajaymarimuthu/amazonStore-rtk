@@ -11,7 +11,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
-
+import { cartActions } from '../../store/CartSlice';
 
 
 
@@ -40,7 +40,7 @@ function Product() {
       fetchProductDetail();
     }
 
-    return () =>{
+    return () => {
       dispatch(productActions.removeSelectedProduct());
     }
 
@@ -51,84 +51,98 @@ function Product() {
 
 
   return (
-    <div className='product'>
-
-      {/* <h1> Current Product </h1> */}
-
-      {
-        product.map((p) => {
-          return <Card key={p.id} sx={{ maxWidth: 300 }} className="cart-card" >
-
-            <CardActionArea >
-              <CardMedia
 
 
-                component="img"
-                height="250"
-                image={p.image}
+    <div>
+       <h1  > Current Product </h1>
 
-                sx={{ maxWidth: 190 }}
-                alt="green iguana"
-              />
-              {/* <ProductImage img={p.image}/> */}
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {p.title.substring(0, 20)}
-                </Typography>
-                {/* <Typography variant="body2" color="text.secondary">
-                  {p.category}
+      <div className='product'>
 
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
+       
 
-                  {p.price}
-                </Typography> */}
-              </CardContent>
-
-
-            </CardActionArea>
-            <CardActions className='cart-productcomponent-button'>
-
-            </CardActions>
-
-          </Card>
-
-        })
-      }
-
-
-      <div>
         {
           product.map((p) => {
-            return <Card key={p.id} sx={{ maxWidth: 500 }} className="cart-card" >
-              {/* <h1>{p.title}</h1> */}
+            return <Card key={p.id} sx={{ maxWidth: 450 }} className="cart-card" >
+
               <CardActionArea >
+                <CardMedia
 
+
+                  component="img"
+                  height="450"
+                  image={p.image}
+
+                  sx={{ minWidth: 100 }}
+                  alt="green iguana"
+                />
+                {/* <ProductImage img={p.image}/> */}
                 <CardContent>
-                  <h2>{p.title}</h2>
                   <Typography gutterBottom variant="h6" component="div">
-                    {p.description}
+                    {/* {p.title.substring(0, 20)} */}
                   </Typography>
+                  {/* <Typography variant="body2" color="text.secondary">
+            {p.category}
 
-                  <h3>Category:{p.category}</h3>
-                  <h3>Price:{p.price}</h3>
-                  <h3>Rating:{p.rating.rate}</h3>
-                  <h3>Count:{p.rating.count}</h3>
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
 
+            {p.price}
+          </Typography> */}
                 </CardContent>
 
 
               </CardActionArea>
+              {/* <CardActions className='cart-productcomponent-button'>
+
+              </CardActions> */}
+              
 
             </Card>
 
           })
         }
+
+
+        <div>
+          {
+            product.map((p) => {
+              return <Card key={p.id} sx={{ maxWidth: 500 }} className="cart-card" >
+                {/* <h1>{p.title}</h1> */}
+                <CardActionArea >
+
+                  <CardContent>
+                    <h2>{p.title}</h2>
+                    <Typography gutterBottom variant="h6" component="div">
+                      {p.description}
+                    </Typography>
+
+                    <h3>Category:{p.category}</h3>
+                    <h3>Price:{p.price}</h3>
+                    <h3>Rating:{p.rating.rate}</h3>
+                    <h3>Count:{p.rating.count}</h3>
+
+                  </CardContent>
+
+
+                </CardActionArea>
+
+                <button className='addToCart' onClick={() => dispatch(cartActions.addToCart(p))}>   Add to Cart </button>
+
+
+              </Card>
+
+            })
+          }
+        </div>
+
+
+
       </div>
 
-
-
     </div>
+
+
+
   )
 }
 

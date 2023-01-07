@@ -14,36 +14,34 @@ const initialCartState={
         //         "count": 259
         //     }
         // }
-    ]
+    ],
+    count:0
  
 }
 
 const cartSlice=createSlice({
     name: 'CartItems',
     initialState:initialCartState,
-    // initialState:[],
+   
 
 
     reducers: {
 
         addToCart:(state,action)=>{
-            // console.log("inside catslice:"+action.payload);
+         
             state.cartProducts.push(action.payload);
-        },
+        }, 
 
         // increaseAmount:(state,action)=>{
+ 
+        //     state.count+=action.payload;
 
-        //     state.amount+=action.payload;
-
-        // }
+        // },
 
         removeAllItems: (state)=>{
-
-
+ 
             state.cartProducts=[];
-
-
-
+ 
         }
 
     }

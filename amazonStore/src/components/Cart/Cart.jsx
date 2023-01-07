@@ -16,6 +16,8 @@ import cartImage from "../../images/cartimage.png"
 function Cart() {
 
   const cartProducts = useSelector(state => state.cart.cartProducts);
+  
+  const count = useSelector(state => state.cart.count);
 
   const dispatch = useDispatch();
 
@@ -67,10 +69,10 @@ function Cart() {
 
 
                   component="img"
-                  height="250"
+                  height="300"
                   image={p.image}
 
-                  sx={{ maxWidth: 190 }}
+                  sx={{ maxWidth: 250 }}
                   alt="green iguana"
                 />
                 {/* <ProductImage img={p.image}/> */}
@@ -86,6 +88,11 @@ function Cart() {
 
                     {p.price}
                   </Typography>
+
+                  <Typography variant="body2" color="text.secondary">
+
+                    <div>Count: {count}</div>
+                    </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions className='cart-productcomponent-button'>
