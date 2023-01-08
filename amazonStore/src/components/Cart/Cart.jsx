@@ -11,15 +11,19 @@ import { useSelector } from 'react-redux'
 import { cartActions } from '../../store/CartSlice';
 
 import cartImage from "../../images/cartimage.png"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Cart() {
 
   const cartProducts = useSelector(state => state.cart.cartProducts);
-  
+
   const count = useSelector(state => state.cart.cartItemsCount);
 
   const dispatch = useDispatch();
+
+  const notify = () => toast.success("Product remove successfully");
+
 
   // console.log(cartProducts);
   // console.log("Hii");
@@ -28,20 +32,33 @@ function Cart() {
   return (
 
     // <></>
- 
+
 
     <div className="cart">
 
- 
+
 
       <div className="cart-header">
 
-        {cartProducts.length === 0 ? null:   <h2>CartItems : {count}</h2>}
-       
+        {cartProducts.length === 0 ? null : <h2>CartItems : {count}</h2>}
+
         <div>
           {cartProducts.length === 0 ?
             null :
-            <button className='cart-btn' onClick={() => dispatch(cartActions.removeAllItems())}>Clear Cart</button>}
+            <button className='cart-btn'
+              onClick={() => {
+                dispatch(cartActions.removeAllItems())
+                notify()
+              }}>Clear Cart</button>
+          }
+
+          <ToastContainer
+            autoClose={1000}
+            position="top-center"
+            closeOnClick
+            rtl={false}
+            theme="light"
+          />
 
 
         </div>
@@ -85,7 +102,7 @@ function Cart() {
                   <Typography variant="body2" color="text.secondary">
 
                     {/* <div>Count: {count}</div> */}
-                    </Typography>
+                  </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions className='cart-productcomponent-button'>

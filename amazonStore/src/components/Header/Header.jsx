@@ -23,7 +23,9 @@ const navItems = ['Home', 'Cart'];
 // const navItems = ['Home', 'Cart', 'Cart Items:'];
 function Header(props) {
 
-  // const amount=useSelector((store)=> store.cart.amount)
+  const amount=useSelector((store)=> store.cart.cartItemsCount)
+
+  // console.log(amount);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -79,7 +81,9 @@ function Header(props) {
             {navItems.map((item) => (
               <Button key={item} sx={{ color: '#fff' }}>
               {/* {item}  */}
-              <Link style={{textDecoration:"none",color:"white"}} to=  {`/${item}`}   >   {item}</Link>  
+
+              {/* {item === "CART" ?  <Link style={{textDecoration:"none",color:"white"}} to= {`/${item}`} > {item}{amount}</Link> :  <Link style={{textDecoration:"none",color:"white"}} to=  {`/${item}`}   >   {item}</Link>    } */}
+              <Link style={{textDecoration:"none",color:"white"}} to=  {`/${item}`}   >   {(item === "Cart")? `${item} : ${amount}`: item }</Link>  
               {/* {`/${item}`} */}
               </Button>
             ))}

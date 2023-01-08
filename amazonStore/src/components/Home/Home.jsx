@@ -8,6 +8,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Home.css'
   
 import { fetchProducts } from '../../store/HomeSlice';
@@ -26,6 +28,8 @@ import Product from '../Product/Product';
 // import ProductImage from './ProductImage';
 
 function Home() {
+
+    const notify = () => toast.success("Product is added to cart successfully");
 
     const dispatch = useDispatch();
     const products = useSelector(state => state.home);
@@ -88,7 +92,19 @@ function Home() {
                                     Add to Cart
                                 </Button> */}
 
-                                <button className='addToCart' onClick={() => dispatch(cartActions.addToCart(p))}>   Add to Cart </button>
+                                <button className='addToCart'
+                                    onClick={() => {
+                                        dispatch(cartActions.addToCart(p))
+                                        notify()
+                                    }}>
+                                    Add to Cart </button>
+                                <ToastContainer
+                                    autoClose={1000}
+                                    position="top-center"
+                                    closeOnClick
+                                    rtl={false}
+                                    theme="light"
+                                />
 
                                 {/* <Button size="small"
                                     onClick={() => dispatch( productActions.addSelectedProduct(p) )}
